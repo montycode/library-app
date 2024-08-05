@@ -35,8 +35,6 @@ export function buildQuery(params: BuildQueryParams) {
       ? `${conditions[0]} && (${conditions.slice(1).join(" && ")})][${offset}...${limit}]`
       : `${conditions[0]}][${offset}...${limit}]`;
 
-  console.log("Generated Query:", finalQuery); // Depuración: Verifica la consulta generada
-
   return finalQuery;
 }
 

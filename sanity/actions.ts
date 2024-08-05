@@ -8,6 +8,34 @@ interface GetAssetsParams {
   page: string;
 }
 
+interface GetAssetByIdParams {
+  id: string;
+}
+
+export const getAssetById = async (params: GetAssetByIdParams) => {
+  const { id } = params;
+
+  try {
+    const asset = await readClient.fetch(
+      groq`*[_id == $id][0] {
+        _id,
+        _createdAt,
+        _updatedAt,
+        name,
+        description,
+        copyLink,
+        assetType,
+        favorite,
+      }`,
+      { id }
+    );
+    return asset ?? null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
 export const getAssets = async (params: GetAssetsParams) => {
   let { query, assetType, page } = params;
 

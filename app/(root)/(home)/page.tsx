@@ -12,11 +12,9 @@ interface Props {
 const Page = async ({ searchParams }: Props) => {
   const assets = await getAssets({
     query: searchParams.query ?? "",
-    assetType: searchParams.assetType ?? "",
+    assetType: searchParams.assetType ?? "featured",
     page: searchParams.page ?? "1",
   });
-
-  console.log("ASSETS", assets);
 
   return (
     <main className="flex-center p-4 mx-auto w-full md:w-[650px] lg:w-[850px] max-w-screen-2xl flex-col">

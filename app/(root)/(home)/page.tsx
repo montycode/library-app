@@ -3,6 +3,7 @@ import Filters from "@/components/Filters";
 import Header from "@/components/Header";
 import { getAssets } from "@/sanity/actions";
 import AssetsList from "@/components/AssetsList";
+import { MdOutlineAddToPhotos } from "react-icons/md";
 export const revalidate = 900;
 
 interface Props {
@@ -19,6 +20,11 @@ const Page = async ({ searchParams }: Props) => {
   return (
     <main className="flex-center p-4 mx-auto w-full md:w-[650px] lg:w-[850px] max-w-screen-2xl flex-col">
       <section className="text-center text-slate-800 w-full space-y-4">
+        <div className="w-full flex justify-end">
+          <button className="text-white bg-slate-500 rounded-lg py-2 px-4 font-normal flex justify-center items-center">
+            <MdOutlineAddToPhotos className="mr-2" /> Request
+          </button>
+        </div>
         <h1 className="mb-4 font-bold text-3xl md:text-4xl">Library</h1>
         <p className="text-slate-800">
           Browse for assets needed to report and present analysis.
